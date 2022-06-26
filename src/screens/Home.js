@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { COLORS } from "../utils";
-import { Search } from "../components";
+import { Categories, Search } from "../components";
 import { AntDesign } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
@@ -32,11 +32,14 @@ const Home = () => {
           <TouchableOpacity style={styles.iconContainer}>
             <AntDesign
               name="bars"
-              size={40}
+              size={35}
               color={COLORS.blue}
               style={styles.iconStyle}
             />
           </TouchableOpacity>
+        </View>
+        <View>
+          <Categories />
         </View>
       </View>
     </SafeAreaView>
@@ -81,18 +84,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   iconStyle: {
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    height: 60,
-    width: 60,
-    marginRight: 40,
-    top: 5,
+    paddingHorizontal: 6,
+    paddingVertical: 5,
+    height: 50,
+    width: 50,
+    marginRight: 60,
     backgroundColor: COLORS.white,
     borderColor: COLORS.grey,
-    shadowRadius: 3.0,
     borderRadius: 10,
     borderWidth: 1,
     borderColor: COLORS.grey,
+    marginTop: 10,
   },
 });
 
