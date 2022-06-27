@@ -7,7 +7,12 @@ const COLORS = {
   backgroundColor: "#171516",
   yellow: "#FFCB00",
   red: "#F5F5F5",
-  blue: "#6d81f2",
+  blue: "#487DD2",
+  greyChange: "#ddddf0",
+  primary: "#487DD2",
+  transparent: "rgba(0, 0, 0, 0.3)",
 };
+
+export const SPACING = 10;
 
 export default COLORS;

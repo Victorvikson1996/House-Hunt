@@ -5,10 +5,11 @@ import {
   SafeAreaView,
   Dimensions,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
 import { COLORS } from "../utils";
-import { Categories, Search } from "../components";
+import { Categories, HouseItem, Search } from "../components";
 import { AntDesign } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
@@ -38,8 +39,11 @@ const Home = () => {
             />
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={{ marginHorizontal: 10 }}>
           <Categories />
+        </View>
+        <View style={styles.houseContainer}>
+          <HouseItem />
         </View>
       </View>
     </SafeAreaView>
@@ -95,6 +99,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: COLORS.grey,
     marginTop: 10,
+  },
+  houseContainer: {
+    marginTop: 20,
   },
 });
 

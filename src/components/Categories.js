@@ -11,7 +11,7 @@ import {
 import React from "react";
 
 import { COLORS } from "../utils";
-import Home from "../screens/Home";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const items = [
   {
@@ -20,7 +20,7 @@ const items = [
   },
   {
     image: require("../assets/images/house.png"),
-    text: "House",
+    text: "Office",
   },
   {
     image: require("../assets/images/building.png"),
@@ -32,31 +32,70 @@ const items = [
   },
 ];
 
-const Categories = (props) => {
-  const [active, setActive] = React.useState("Home");
+const ScrollButton = () => {
+  const [activeCategory, setActiveCategory] = React.useState(0);
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       {items.map((item, index) => (
         <TouchableOpacity
-          active={active}
-          setActive={setActive}
           key={index}
-          style={styles.container}
-          onPress={(text) => setActive(text)}
+          onPress={() => setActiveCategory(index)}
+          style={[
+            {
+              marginHorizontal: 15,
+              // marginVertical: 15,
+              backgroundColor: COLORS.greyChange,
+              paddingVertical: 6,
+              paddingHorizontal: 18,
+              borderRadius: 15,
+              width: 90,
+              height: 90,
+              marginTop: 10,
+              alignItems: "center",
+              marginRight: 10,
+            },
+            activeCategory === index && { backgroundColor: COLORS.blue },
+          ]}
         >
-          <Image source={item.image} style={styles.imageStyle} />
-          <Text style={styles.text}>{item.text}</Text>
+          <Image
+            source={item.image}
+            style={[
+              {
+                width: 50,
+                height: 50,
+                resizeMode: "contain",
+                tintColor: COLORS.blue,
+              },
+              activeCategory === index && { tintColor: COLORS.white },
+            ]}
+          />
+          <Text
+            style={[
+              {
+                fontSize: 13,
+                fontWeight: "bold",
+                color: COLORS.blue,
+              },
+              activeCategory === index && { color: COLORS.white },
+            ]}
+          >
+            {item.text}
+          </Text>
         </TouchableOpacity>
       ))}
     </ScrollView>
   );
 };
 
+const Categories = ({ onPress }) => {
+  return <ScrollButton />;
+};
+
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 15,
     // marginVertical: 15,
-    backgroundColor: COLORS.blue,
+    backgroundColor: COLORS.greyChange,
     paddingVertical: 6,
     paddingHorizontal: 18,
     borderRadius: 15,
